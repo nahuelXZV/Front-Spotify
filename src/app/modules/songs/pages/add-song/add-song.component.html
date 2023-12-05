@@ -1,0 +1,89 @@
+<div>
+    <div class="header">
+        <h1>Añadir cancion</h1>
+    </div>
+    <div class="body">
+        <form [formGroup]="formSong" (ngSubmit)="sendSong()">
+            <div class="form-flex">
+                <div class="col">
+                    <label for="imagen">
+                        <span>Imagen</span>
+                        <app-drop-zone-image [width]="'400px'" [height]="'400px'" (changeImage)="handleChangeImage($event)"/>
+                    </label>
+                </div>
+                <div class="col">
+                    <div class="input-form">
+                        <label for="">
+                            <span>Cancion</span>
+                            <input type="file" name="" id="" (change)="handleChangeSong($event)">
+                        </label>
+                    </div>
+                    <div class="input-form">
+                        <label>
+                            <span>Nombre</span>
+                            <input type="text" name="nombre" formControlName="nombre">
+                        </label>
+                    </div>
+                    <div class="flex flex-row">
+                        <div class="input-form flex flex-col">
+                            <label for="genero">
+                                <span>Genero</span>
+                                <select name="genero" id="genero" formControlName="genero">
+                                    <option value="no-value" disabled selected hidden>Escoge una opción</option>
+                                    <option *ngFor="let genre of genres" [value]="genre.id">
+                                        {{genre.nombre}}
+                                    </option>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="input-form flex flex-col">
+                            <label for="album">
+                                <span>Album</span>
+                                <select name="album" id="album" formControlName="album">
+                                    <option value="no-value" disabled selected hidden>Escoge una opción</option>
+                                    <option *ngFor="let album of albums" [value]="album.id">
+                                        {{album.nombre}}
+                                    </option>
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="flex flex-row">
+                        <div class="input-form flex flex-col">
+                            <label for="is-private">
+                                <span>Disponibilidad</span>
+                                <hr>
+                                <div class="flex flex-row">
+                                    <input type="radio" name="isPrivado" id="is-private" formControlName="isPrivado" value="true">
+                                        <span>Privado</span>
+                                    <input type="radio" name="isPrivado" id="is-private" formControlName="isPrivado" value="false">
+                                        <span>Público</span>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="input-form flex flex-col">
+                            <label for="idioma">
+                                <span>Idioma</span>
+                                <select name="idioma" id="idioma" formControlName="idioma">
+                                    <option value="no-value" selected disabled hidden>Elige una opción</option>
+                                    <option value="es">Español</option>
+                                    <option value="en">Ingles</option>
+                                    <option value="pt">Portugues</option>
+                                    <option value="fr">Frances</option>
+                                    <option value="it">Italiano</option>
+                                    <option value="de">Alemán</option>
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="form-flex form-foot">
+                <button type="submit" class="submit">Añadir</button>
+                <button (click)="backToMySongs()" type="button" class="cancel">Volver</button>
+            </div>
+        </form>
+    </div>
+</div>

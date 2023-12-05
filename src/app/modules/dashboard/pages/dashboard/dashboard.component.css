@@ -1,0 +1,17 @@
+.card {
+    display: block;
+    width: 300px;
+}
+
+.container {
+    /* padding: 2px 16px; */
+    margin: 2rem;
+    height: 80vh;
+}
+
+.sub-container-row {
+    gap: 3rem;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}

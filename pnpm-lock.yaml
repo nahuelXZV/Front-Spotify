@@ -32,6 +32,9 @@ dependencies:
   ngx-cookie-service:
     specifier: ^16.0.0
     version: 16.0.1(@angular/common@16.2.10)(@angular/core@16.2.10)
+  ngx-dropzone-wrapper:
+    specifier: ^15.0.0
+    version: 15.0.0(@angular/common@16.2.10)(@angular/core@16.2.10)
   rxjs:
     specifier: ~6.6.0
     version: 6.6.7
@@ -3442,6 +3445,10 @@ packages:
       domhandler: 5.0.3
     dev: true
 
+  /dropzone@5.9.3:
+    resolution: {integrity: sha512-Azk8kD/2/nJIuVPK+zQ9sjKMRIpRvNyqn9XwbBHNq+iNuSccbJS6hwm1Woy0pMST0erSo0u4j+KJaodndDk4vA==}
+    dev: false
+
   /eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
     dev: true
@@ -5207,6 +5214,18 @@ packages:
     dependencies:
       '@angular/common': 16.2.10(@angular/core@16.2.10)(rxjs@6.6.7)
       '@angular/core': 16.2.10(rxjs@6.6.7)(zone.js@0.13.3)
+      tslib: 2.6.2
+    dev: false
+
+  /ngx-dropzone-wrapper@15.0.0(@angular/common@16.2.10)(@angular/core@16.2.10):
+    resolution: {integrity: sha512-ZmdlGJ029xtPPv65tn/YcYtZJj1ufc1pIKmZX8xxaxjrjD+jIvRPiH1UP2p0xfCwaVMQgT8/IfwWCjvgCCUqkA==}
+    peerDependencies:
+      '@angular/common': '>=9.0.0'
+      '@angular/core': '>=9.0.0'
+    dependencies:
+      '@angular/common': 16.2.10(@angular/core@16.2.10)(rxjs@6.6.7)
+      '@angular/core': 16.2.10(rxjs@6.6.7)(zone.js@0.13.3)
+      dropzone: 5.9.3
       tslib: 2.6.2
     dev: false
 

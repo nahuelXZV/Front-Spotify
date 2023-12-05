@@ -36,3 +36,15 @@ button {
 button:disabled {
     opacity: .5;
 }
+
+.flex {
+    display: flex;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.flex-col {
+    flex-direction: column;
+}

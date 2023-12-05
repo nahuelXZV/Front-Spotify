@@ -2,6 +2,7 @@ import { environment } from './../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { IAuthenticated } from '../interfaces/auth.interface';
 
 
 @Injectable({
@@ -17,9 +18,5 @@ export class AuthService {
       password
     }
     return this.http.post(`${this.URL}/login`, body)
-  }
-
-  suma(a: number, b: number): number {
-    return a + b
   }
 }

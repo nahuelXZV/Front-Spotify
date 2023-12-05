@@ -1,0 +1,75 @@
+<div class="container">
+    <div class="header">
+        <h1>Generos</h1>
+        <div class="buttons-header">
+            <button (click)="handleViewSongsButton()" >
+                Ver Canciones
+            </button>
+            <button (click)="handleOpenCreateGenreModalButton()" >
+                Añadir Album
+            </button>
+        </div>
+    </div>
+    <div class="flex flex-row">
+        <div class="flex flex-col col-1">
+            <div class="list">
+                <div class="play-list-body">
+                    <ul class="play-list-table-header">
+                        <li>Portada</li>
+                        <li>Nombre</li>
+                        <li> Acciones</li>
+                        <!-- <li><i class="uil uil-clock-eight"></i></li> -->
+                    </ul>
+                    <ul class="play-list-rows" *ngFor="let album of albums">
+                        <li class="track-name-opacity">
+                            <div class="cover-section">
+                                <img appImgBroken class="cover-track" [src]="album.imagen" [alt]="album.nombre">
+                            </div>
+                        </li>
+                        <li class="track-name-opacity">
+                            {{album.nombre}}
+                        </li>
+                        <li class="list-buttons">
+                            <button class="button-view" (click)="viewGenre(album.id)">
+                                <i class="uil uil-eye"></i>
+                            </button>
+                            <button class="button-edit" (click)="editGenre(album.id)">
+                                <i class="uil uil-edit"> </i>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col col-2">
+            <section class="view-section">
+                <div class="image">
+                    <!-- if -->
+                    <img *ngIf="albumToView" src="{{albumToView.imagen}}" alt="imagen">
+                    <!-- else -->
+                    <div *ngIf="!albumToView" class="image-placeholder flex flex-col">
+                        <i class="uil uil-image"></i>
+                        <span>Selecciona un genero para mostrar aqui</span>
+                    </div>
+                </div>
+                <div class="foot-section">
+                    <span>{{albumToView?.nombre}}</span>
+                </div>
+            </section>
+        </div>
+    </div>
+    <app-modal-form *ngIf="albumToEdit"
+        [data]="albumToEdit"
+        [open]="!!albumToEdit"
+        [buttonLabel]="'Actualizar'"
+        (close)="albumToEdit = null"
+        (create)="handleUpdateGenreForm($event)"
+    />
+    <!-- Otro componente o plantilla -->
+    <app-modal-form *ngIf="openCreateAlbumModal"
+        [title]="'Añadir Album'"
+        [open]="openCreateAlbumModal"
+        (create)="handleSubmitCreateGenre($event)"
+        (close)="openCreateAlbumModal = false"
+    />
+</div>
