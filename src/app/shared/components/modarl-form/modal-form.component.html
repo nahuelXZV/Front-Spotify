@@ -1,0 +1,63 @@
+<!-- modal-form.component.html -->
+<div class="modal" *ngIf="open">
+    <div class="modal-content">
+        <span class="close" (click)="cancelar()">&times;</span>
+        <h2>{{ title === '' ? 'Crear elemento': title }}</h2>
+        <form [formGroup]="form" (ngSubmit)="handleSubmit()" novalidate>
+
+            <div class="form-content">
+                <div class="form-group">
+                    <label for="imagen">Imagen:</label>
+                    <!-- <label for="imagen">Imagen:</label>
+                    <div class="file-input">
+                        <input type="file" id="imagen" name="imagen" (change)="onFileSelected($event)" accept="image/*">
+                        <input type="file" id="imagen" name="imagen" ngModel accept="image/*">
+                        <span class="file-label">{{ imagen ? imagen.name : 'Seleccionar archivo' }}</span>
+                    </div> -->
+                    <label for="file" class="file-input" draggable="true" #labelInputFile (dragenter)="onEnter($event)"
+                        (drop)="handleDrop($event)" (dragend)="onLeave($event)" (dragleave)="onLeave($event)"
+                        (dragover)="handleDragOver($event)">
+                        <div #dropZone class="drop-zone"
+                            [ngStyle]="{ display: data ? 'none' : 'block'}"
+                        >
+                            <p><b>Seleccione una imagen</b> o arrastrela aquí</p>
+                        </div>
+                        <input
+                            (change)="onFileSelected($event)"
+                            type="file"
+                            id="file"
+                            #inputElementFile
+                        >
+                        <img
+                            [ngStyle]="{ display: data ? 'block' : 'none'}"
+                            #imageZone
+                            [src]="data?.imagen"
+                        >
+                    </label>
+                </div>
+
+                <div class="form-group">
+
+                    <label for="nombre">Nombre:</label>
+
+                    <input
+                        type="text"
+                        id="nombre"
+                        formControlName="nombre"
+                        required
+                        [value]="data?.nombre"
+                    >
+                </div>
+            </div>
+            <div class="form-error" *ngIf="isError">
+                <span>Por favor complete los datos solicitados</span>
+            </div>
+            <div class="form-foot">
+                <div class="buttons">
+                    <button type="button" class="cancel-btn" (click)="cancelar()">Cancelar</button>
+                    <button type="submit" class="create-btn">{{buttonLabel}}</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

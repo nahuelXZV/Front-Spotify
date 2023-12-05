@@ -1,0 +1,125 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 2rem 1rem 2rem;
+}
+
+.form-flex {
+    margin: 1rem 2rem;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    /* align-items: center; */
+    gap: 2rem;;
+}
+
+.form-flex .col {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* align-items: center; */
+    gap: 1rem;
+    /* width: 33%; */
+}
+
+.form-flex span {
+    display: block;
+}
+
+.form-flex .col:nth-child(1) {
+    width: 33%;
+}
+
+.form-flex .col:nth-child(2) {
+    width: 67%;
+}
+
+.form-flex .input-form{
+    /* margin: 0.5rem 0 0.5rem 0; */
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    /* background-color: var(--color-1); */
+    /* cursor: pointer; */
+    color: white;
+}
+
+
+
+.form-flex input[type="text"] {
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    /* background-color: var(--color-1); */
+    /* cursor: pointer; */
+    color: black;
+    width: -webkit-fill-available;
+    margin-top: 0.5rem;
+    cursor: text;
+}
+
+.form-flex input[type="file"] {
+    padding: 0.5rem 1rem 0.5rem 0rem;
+    border-radius: 0.5rem;
+    border: none;
+    /* background-color: var(--color-1); */
+    /* cursor: pointer; */
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+
+.form-flex select {
+    padding: 0.5rem 1rem 0.5rem 0rem;
+    border-radius: 0.5rem;
+    /* border: none; */
+    /* background-color: var(--color-1); */
+    /* cursor: pointer; */
+    /* color: white; */
+    width: 100%;
+    margin-top: 0.5rem;
+    text-transform: uppercase;
+}
+
+.form-flex .dz-wrapper {
+    height: 100px;
+    display: flex;
+    /* flex-direction: row; */
+}
+
+button.submit{
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    background-color: var(--color-1);
+    cursor: pointer;
+    color: white;
+    width: 100px;
+}
+
+button.cancel {
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    background-color: var(--color-2);
+    cursor: pointer;
+    color: white;
+    width: 100px;
+}
+
+
+.form-flex.form-foot{
+    justify-content: flex-end;
+    margin: 1rem 3rem;
+    gap: 1rem;
+}
+
+.input-form.flex.flex-col {
+    width: 50%;
+}

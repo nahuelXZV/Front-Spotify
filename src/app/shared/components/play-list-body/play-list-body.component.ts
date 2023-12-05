@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TrackModel } from '@core/models/tracks.model';
+import { ISong } from '@modules/songs/interfaces/song.interface';
 
 
 @Component({
@@ -8,7 +9,7 @@ import { TrackModel } from '@core/models/tracks.model';
   styleUrls: ['./play-list-body.component.css']
 })
 export class PlayListBodyComponent implements OnInit {
-  @Input() tracks: TrackModel[] = []
+  @Input() tracks: ISong[] = []
   optionSort: { property: string | null, order: string } = { property: null, order: 'asc' }
   constructor() { }
 

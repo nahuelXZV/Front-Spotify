@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '@modules/auth/services/auth.service';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import { StateService } from 'src/app/services/state.service';
 
 @Component({
   selector: 'app-login-page',
@@ -13,7 +14,7 @@ export class LoginPageComponent implements OnInit {
   errorSession: boolean = false
   formLogin: UntypedFormGroup = new UntypedFormGroup({});
 
-  constructor(private authService: AuthService, private cookie: CookieService,
+  constructor(private authService: AuthService, private cookie: CookieService, private stateService: StateService,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -31,6 +32,8 @@ export class LoginPageComponent implements OnInit {
           ])
       }
     )
+
+
   }
 
   sendLogin(): void {
@@ -39,9 +42,10 @@ export class LoginPageComponent implements OnInit {
       //TODO: 200 <400
       .subscribe(responseOk => { //TODO: Cuando el usuario credenciales Correctas ✔✔
         console.log('Session iniciada correcta', responseOk);
-        const { accessToken, User } = responseOk
-        this.cookie.set('token', accessToken, 4, '/') //TODO:📌📌📌📌
-        this.router.navigate(['/', 'tracks'])
+        const { accessToken, User } = responseOk;
+        this.cookie.set('token', accessToken, 4, '/');
+        this.stateService.setCurrentUser(User);
+        this.router.navigate(['/', 'tracks']);
       },
         err => {//TODO error 400>=
           this.errorSession = true

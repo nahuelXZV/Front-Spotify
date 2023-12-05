@@ -1,0 +1,50 @@
+/* card.component.css */
+.card {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+img {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ddd;
+    /* filter: brightness(0.8) saturate(1.2) hue-rotate(120deg); */
+    /* filter: hue-rotate(90deg); */
+    background-color: var(--color-1);
+}
+
+.custom-content {
+    padding: 10px;
+}
+
+button {
+    /* display: hidden; */
+    visibility: hidden;
+    opacity: 0;
+    background-color: #1db954;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 50px;
+    left: 35%;
+    transition: transform 0.3s ease-in-out;
+    transform: translateY(100%);
+}
+
+.card:hover button {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+    /* bottom: 100px; */
+    transform: translateY(-100%);
+    transition: transform 0.2s ease-in-out;
+}

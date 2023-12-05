@@ -1,0 +1,9 @@
+<label for="file" class="file-input" draggable="true" #labelInputFile (dragenter)="onEnter($event)"
+    (drop)="handleDrop($event)" (dragend)="onLeave($event)" (dragleave)="onLeave($event)"
+    (dragover)="handleDragOver($event)" [style]="{width: width, height: height}">
+    <div #dropZone class="drop-zone">
+        <p><b>Seleccione una imagen</b> o arrastrela aquí</p>
+    </div>
+    <input (change)="onFileSelected($event)" type="file" id="file" #inputElementFile>
+    <img #imageZone>
+</label>

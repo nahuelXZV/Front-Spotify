@@ -1,0 +1,39 @@
+<div>
+    <div class="header">
+        <h1>Usuarios</h1>
+        <!-- <div class="buttons-header">
+            <button >
+                Añadir canción
+            </button>
+        </div> -->
+    </div>
+    <div class="">
+        <div class="play-list-body">
+            <ul class="play-list-table-header">
+                <li >Nombre</li>
+                <li >Apellido</li>
+                <li>email</li>
+                <li>role</li>
+                <!-- <li><i class="uil uil-clock-eight"></i></li> -->
+            </ul>
+            <ul class="play-list-rows" *ngFor="let user of users">
+                <li class="track-name-opacity">
+                    {{user.nombre}}
+                </li>
+                <li class="track-name-opacity">
+                    {{user.apellido}}
+                </li>
+                <li class="track-name-opacity">
+                    {{user.email}}
+                </li>
+                <li class="track-name-opacity">
+                    {{user.role}}
+                </li>
+            </ul>
+        </div>
+        <table>
+
+        </table>
+    </div>
+    <!-- Otro componente o plantilla -->
+</div>

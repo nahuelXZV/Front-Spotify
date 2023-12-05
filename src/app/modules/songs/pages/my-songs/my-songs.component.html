@@ -1,0 +1,24 @@
+<div>
+    <div class="header">
+        <h1>Mis canciones</h1>
+        <div class="buttons-header">
+            <button (click)="handleViewAlbumsButtonClick()">
+                Ver Albumes
+            </button>
+            <button (click)="handleAlbumButtonClick()">
+                Añadir album
+            </button>
+            <button (click)="openAddSongPage()">
+                Añadir canción
+            </button>
+        </div>
+    </div>
+    <app-play-list-body [tracks]="songs" ></app-play-list-body>
+    <!-- Otro componente o plantilla -->
+    <app-modal-form
+        [title]="'Crear album'"
+        [open]="openAlbumModal"
+        (create)="handleSubmitAlbumForm($event)"
+        (close)="openAlbumModal = false"
+    />
+</div>

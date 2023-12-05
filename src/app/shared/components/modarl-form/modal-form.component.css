@@ -1,0 +1,190 @@
+/* modal-form.component.css */
+.modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+}
+
+.modal-content {
+    background: #121212;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    width: auto;
+    max-width: 500px;
+    text-align: center;
+    position: relative;
+    animation: fadeInOut 0.3s ease-in-out;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    color: #b3b3b3;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #fff;
+}
+
+h2,
+label,
+button {
+    color: #fff;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.file-input {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.file-label {
+    background-color: #1db954;
+    /* color: #fff; */
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.buttons {
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.cancel-btn {
+    background: #606060;
+}
+
+.create-btn {
+    background: #1db954;
+}
+
+.cancel-btn:hover,
+.create-btn:hover {
+    background: #404040;
+}
+
+@keyframes fadeInOut {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* [@fadeInOut] {
+    display: block;
+} */
+
+.form-content {
+    display: flex;
+    flex-direction: column;
+    align-items: star;
+    padding: 1rem 3rem;
+    gap: 1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    /* justify-content: space-between; */
+}
+
+.form-group input[type="text"] {
+    width: -webkit-fill-available;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    background-color: var(--color-2);
+    color: white;
+}
+
+
+.file-input {
+    display: grid;
+    grid-template-areas: "stack";
+    width: 360px;
+    height: 360px;
+    background-color: #eeeeee;
+    border-radius: 8px;
+    color: #121212;
+}
+
+.file-input > * {
+    grid-area: stack;
+}
+
+.file-input > input {
+    opacity: 1;
+    /* z-index: -1; */
+}
+
+.file-input > .drop-zone {
+    margin: 12px;
+    border: dashed 2px #aaaaaa;
+    border-radius: 4px;
+    /* z-index: -1; */
+    transition: margin 200ms;
+}
+
+.file-input.active > .drop-zone {
+    margin: 14px;
+    background-color: #dadada;
+}
+
+.file-input img {
+    display: none;
+    object-fit: contain;
+    width: 90% ;
+    height: 90% ;
+    margin: auto;
+    /* margin: 12px; */
+    max-width: 360px;
+    max-height: 360px;
+    /* border: dashed 2px #aaaaaa; */
+    /* border-radius: 4px; */
+    /* z-index: -1; */
+    /* transition: margin 200ms; */
+}
+
+.form-foot {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+    padding: 0rem 3rem;
+}
+
+.form-error {
+    color: red;
+}

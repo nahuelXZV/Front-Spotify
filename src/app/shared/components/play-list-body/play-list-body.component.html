@@ -5,18 +5,20 @@
         <li>fecha incorporación 🍌😁</li>
         <li><i class="uil uil-clock-eight"></i></li>
     </ul>
-    <ul class="play-list-rows" *ngFor="let track of tracks |orderList:optionSort.property:optionSort.order">
+    <ul class="play-list-rows" *ngFor="let track of tracks ">
+        <!-- |orderList:optionSort.property:optionSort.order -->
         <li class="track-name">
             <ng-container *ngTemplateOutlet="coverSection;context:{track:track}"></ng-container>
         </li>
         <li class="track-name-opacity">
-            {{track.album}}
+            <!-- <ng-container *ngTemplateOutlet="coverAlbumSection;context:{track:track}"></ng-container> -->
+            {{track.album.nombre}}
         </li>
         <li class="track-name-opacity">
-            {{track.album}}
+            {{track.createdAt | date: 'dd/MM/yyyy'}}
         </li>
         <li class="track-name-opacity">
-            {{track.album}}
+            {{track.duracion}}
         </li>
 
     </ul>
@@ -26,11 +28,21 @@
 <ng-template #coverSection let-track="track">
 
     <div class="cover-section">
-        <img appImgBroken class="cover-track" [src]="track.cover" [alt]="track.name">
+        <img appImgBroken class="cover-track" [src]="track.imagen" [alt]="track.nombre">
         <div class="cover-info">
-            <div class="name-track">{{track.name}}</div>
-            <div class="name-track-details">{{track.artist.name}}</div>
+            <div class="name-track">{{track.nombre}}</div>
+            <div class="name-track-details">{{track.usuario.nombre}}</div>
         </div>
     </div>
 
 </ng-template>
+
+<!-- <ng-template #coverAlbumSection let-track="track">
+    <div class="cover-section">
+        <img appImgBroken class="cover-track" [src]="track.album.imagen" [alt]="track.album.nombre">
+        <div class="cover-info">
+            <div class="name-track">{{track.album.nombre}}</div>
+        </div>
+    </div>
+
+</ng-template> -->
