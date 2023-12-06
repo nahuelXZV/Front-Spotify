@@ -6,7 +6,7 @@ export interface INewGenre {
 
 
 export interface IGenre {
-    id: number,
+    id: string,
     nombre: string,
     imagen: string,
     created_at: string,

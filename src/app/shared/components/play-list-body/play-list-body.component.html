@@ -1,48 +1,36 @@
 <div class="play-list-body">
-    <ul class="play-list-table-header">
-        <li (click)="changeSort('name')">Nombre ❤</li>
-        <li (click)="changeSort('album')">álbum 🆗</li>
-        <li>fecha incorporación 🍌😁</li>
-        <li><i class="uil uil-clock-eight"></i></li>
-    </ul>
-    <ul class="play-list-rows" *ngFor="let track of tracks ">
-        <!-- |orderList:optionSort.property:optionSort.order -->
-        <li class="track-name">
-            <ng-container *ngTemplateOutlet="coverSection;context:{track:track}"></ng-container>
-        </li>
-        <li class="track-name-opacity">
-            <!-- <ng-container *ngTemplateOutlet="coverAlbumSection;context:{track:track}"></ng-container> -->
-            {{track.album.nombre}}
-        </li>
-        <li class="track-name-opacity">
-            {{track.createdAt | date: 'dd/MM/yyyy'}}
-        </li>
-        <li class="track-name-opacity">
-            {{track.duracion}}
-        </li>
+  <ul class="play-list-table-header">
+    <li (click)="changeSort('name')">Nombre ❤</li>
+    <li (click)="changeSort('album')">álbum 🆗</li>
+    <li>fecha incorporación 🍌😁</li>
+    <li><i class="uil uil-clock-eight"></i></li>
+  </ul>
+  <ul class="play-list-rows" *ngFor="let track of tracks ">
+    <li class="track-name">
+      <ng-container *ngTemplateOutlet="coverSection;context:{track:track}"></ng-container>
+    </li>
+    <li class="track-name-opacity">
+      {{track.album.nombre}}
+    </li>
+    <li class="track-name-opacity">
+      {{track.fecha_lanzamiento| date: 'dd/MM/yyyy'}}
+    </li>
+    <li class="track-name-opacity">
+      {{track.duracion}}
+    </li>
 
-    </ul>
+  </ul>
 </div>
 
 <!--template del cover-->
 <ng-template #coverSection let-track="track">
 
-    <div class="cover-section">
-        <img appImgBroken class="cover-track" [src]="track.imagen" [alt]="track.nombre">
-        <div class="cover-info">
-            <div class="name-track">{{track.nombre}}</div>
-            <div class="name-track-details">{{track.usuario.nombre}}</div>
-        </div>
+  <div class="cover-section">
+    <img appImgBroken class="cover-track" [src]="track.imagen" [alt]="track.nombre">
+    <div class="cover-info">
+      <div class="name-track">{{track.nombre}}</div>
+      <div class="name-track-details">{{track.usuario.nombre}}</div>
     </div>
+  </div>
 
 </ng-template>
-
-<!-- <ng-template #coverAlbumSection let-track="track">
-    <div class="cover-section">
-        <img appImgBroken class="cover-track" [src]="track.album.imagen" [alt]="track.album.nombre">
-        <div class="cover-info">
-            <div class="name-track">{{track.album.nombre}}</div>
-        </div>
-    </div>
-
-</ng-template> -->

@@ -18,6 +18,7 @@ export class DashboardComponent {
     this.router.navigate(['genres'], { relativeTo: this.route });
   }
 
-
-
+  handleButtonSong() {
+    this.router.navigate(['songs'], { relativeTo: this.route });
+  }
 }

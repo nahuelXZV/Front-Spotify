@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IGenre } from '@core/models/genre.interface';
 import { IUser } from '@modules/auth/interfaces/auth.interface';
 import { IAlbum } from '@modules/songs/interfaces/album.interface';
+import { IGenre } from '@modules/songs/interfaces/genre.interface';
 import { AlbumService } from '@modules/songs/services/album.service';
 import { GenreService } from '@modules/songs/services/genre.service';
 import { SongService } from '@modules/songs/services/songs.service';
-import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
 import { StateService } from 'src/app/services/state.service';
 
 @Component({

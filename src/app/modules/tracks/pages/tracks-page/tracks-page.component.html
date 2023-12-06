@@ -1,8 +1,48 @@
 <div class="tracks-page">
-    <!--section top (small)-->
-    <app-section-generic [dataTracks]="tracksTrending" [mode]="'small'" [title]="'¡La mejor música del mundo!'">
-    </app-section-generic>
-    <!--section medium (big)-->
-    <app-section-generic [dataTracks]="tracksRandom" [mode]="'big'" [title]="'Lo mejor de Electronica'">
-    </app-section-generic>
+
+  <div class="section">
+    <h2>Buenas tardes {{user?.nombre}} </h2>
+    <h3>Escucha la mejor música del mundo, en cualquier momento y lugar.</h3>
+  </div>
+
+  <div class="section">
+    <h2>Últimos lanzamientos</h2>
+    <div class="grid">
+      <app-card-track *ngFor="let track of trackList" [track]="track"></app-card-track>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Tendencia</h2>
+    <div class="grid">
+      <app-card-track *ngFor="let track of trackRecommended" [track]="track"></app-card-track>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Géneros más escuchados</h2>
+    <div class="grid">
+      <app-card-genre *ngFor="let genre of genreList" [genre]="genre"></app-card-genre>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </div>

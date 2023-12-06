@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { IGenre } from '@core/models/genre.interface';
 import { GenreService } from '@modules/dashboard/services/genre.service';
+import { IGenre } from '@modules/songs/interfaces/genre.interface';
 
 @Component({
   selector: 'app-genres',
@@ -88,7 +88,7 @@ export class GenresComponent implements OnInit {
       }, err => { console.log(err) })
   }
 
-  handleSubmitCreateGenre(event: {imagen: File, nombre: string}) {
+  handleSubmitCreateGenre(event: { imagen: File, nombre: string }) {
 
     this.genreService.sendCredentials(event)
       .subscribe(response => {

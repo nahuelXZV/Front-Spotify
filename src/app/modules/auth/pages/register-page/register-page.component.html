@@ -1,0 +1,42 @@
+<div class="login-auth-page">
+  <div class="login-auth-wrapper">
+    <h3>Para continuar, registrate en Spotify.</h3>
+    <!-- <div class="login-social-zone">
+          <button class="social-btn btn-fb "> <i class="uil uil-facebook-f"></i> Continuar con Social</button>
+          <button class="social-btn btn-apple"><i class="uil uil-apple"></i> Continuar con Apple</button>
+          <button class="social-btn"><i class="uil uil-google"></i> Continuar con Google</button>
+      </div> -->
+    <div class="separator"></div>
+    <form (ngSubmit)="sendLogin()" [formGroup]="formRegister" class="login-auth-form">
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input formControlName="nombre" type="text" placeholder="Nombre" class="form-input">
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="apellido">Apellido</label>
+        <input formControlName="apellido" type="text" placeholder="Apellido" class="form-input">
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="email">Dirección de correo </label>
+        <input formControlName="email" type="text" placeholder="Dirección de correo " class="form-input">
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="password">Contraseña</label>
+        <input formControlName="password" type="password" placeholder="Contraseña" class="form-input">
+      </div>
+      <br>
+      <div *ngIf="errorSession">
+        Ocurrio un error con tu email o password
+      </div>
+      <br>
+      <div class="form-action">
+        <p class="text-sm font-semibold text-gray-800 text-center">Continuar con el pago para completar el registro</p>
+        <div id="paypal-button-container"></div>
+        <!-- <button [disabled]="formRegister.invalid" class="login social-btn">Registrarse</button> -->
+      </div>
+    </form>
+  </div>
+</div>

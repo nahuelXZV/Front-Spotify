@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { TrackModel } from '@core/models/tracks.model';
-import { SearchService } from '@modules/history/services/search.service';
+import { ISong } from '@modules/songs/interfaces/song.interface';
+import { SongService } from '@modules/songs/services/songs.service';
+import { TrackService } from '@modules/tracks/services/track.service';
 import { Observable, of } from 'rxjs';
 
 @Component({
@@ -9,16 +10,19 @@ import { Observable, of } from 'rxjs';
   styleUrls: ['./history-page.component.css']
 })
 export class HistoryPageComponent implements OnInit {
-  listResults$: Observable<any> = of([])
-  constructor(private searchService: SearchService) { }
+  listResults: ISong[] = [];
+
+  constructor(private trackService: SongService) { }
 
   ngOnInit(): void {
   }
 
   receiveData(event: string): void {
-    //TODO: agarras el termino y sabes que solo se ejecuta cunado tiene 3 caracters
-    console.log('🎁 Estoy en el padre jua jua...', event);
-    this.listResults$ = this.searchService.searchTracks$(event)
-
+    this.trackService.searchTracks(event)
+      .subscribe(responseOk => {
+        this.listResults = responseOk;
+      }, error => {
+        this.listResults = [];
+      })
   }
 }

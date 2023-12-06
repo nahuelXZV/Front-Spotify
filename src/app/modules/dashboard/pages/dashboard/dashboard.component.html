@@ -1,30 +1,39 @@
 <div class="container">
-    <div class="flex flex-row sub-container-row">
-        <div class="flex flex-col sub-container-col">
-            <app-card [imageUrl]="'https://cdn-icons-png.flaticon.com/512/33/33308.png'" class="card"
-                (buttonClick)="handleButtonUser()">
-                <!-- <img src="https://picsum.photos/200/300" alt="Card Image"> -->
-                <div class="custom-content">
-                    <h1>Gestion Usuarios</h1>
-                    <p>Esta sección contiene las acciones correspondientes con la administración de usuarios.</p>
-                </div>
-                <ng-container buttonContent>
-                    <span>Acceder</span>
-                </ng-container>
-            </app-card>
+  <div class="flex flex-row sub-container-row">
+    <div class="flex flex-col sub-container-col">
+      <app-card [imageUrl]="'https://cdn-icons-png.flaticon.com/512/33/33308.png'" class="card"
+        (buttonClick)="handleButtonUser()">
+        <!-- <img src="https://picsum.photos/200/300" alt="Card Image"> -->
+        <div class="custom-content">
+          <h1>Gestion Usuarios</h1>
+          <p>Esta sección contiene las acciones correspondientes con la administración de usuarios.</p>
         </div>
-        <div class="flex flex-col sub-container-col">
-            <app-card [imageUrl]="'https://cdn-icons-png.flaticon.com/512/4381/4381522.png'" class="card"
-                (buttonClick)="handleButtonGenre()">
-                <!-- <img src="https://picsum.photos/200/300" alt="Card Image"> -->
-                <div class="custom-content">
-                    <h1>Gestión Generos</h1>
-                    <p>En esta sección se crea, modifica y demás acciones relacionadas con los generos.</p>
-                </div>
-                <ng-container buttonContent>
-                    <span>Acceder</span>
-                </ng-container>
-            </app-card>
-        </div>
+        <ng-container buttonContent>
+          <span>Acceder</span>
+        </ng-container>
+      </app-card>
     </div>
+    <div class="flex flex-col sub-container-col">
+      <app-card [imageUrl]="'https://cdn-icons-png.flaticon.com/512/4381/4381522.png'" class="card"
+        (buttonClick)="handleButtonGenre()">
+        <!-- <img src="https://picsum.photos/200/300" alt="Card Image"> -->
+        <div class="custom-content">
+          <h1>Gestión Generos</h1>
+          <p>En esta sección se crea, modifica y demás acciones relacionadas con los generos.</p>
+        </div>
+        <ng-container buttonContent>
+          <span>Acceder</span>
+        </ng-container>
+      </app-card>
+    </div>
+    <div class="flex flex-col sub-container-col">
+      <app-card [imageUrl]="'https://cdn-icons-png.flaticon.com/512/4381/4381522.png'" class="card"
+        (buttonClick)="handleButtonGenre()">
+        <div class="custom-content">
+          <h1>Gestionar Canciones</h1>
+          <p>En esta sección se puede modificar las canciones.</p>
+        </div>
+      </app-card>
+    </div>
+  </div>
 </div>

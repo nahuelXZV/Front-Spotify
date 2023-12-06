@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ProfilePageComponent } from '@modules/auth/pages/profile-page/profile-page.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'songs',
     loadChildren: () => import('@modules/songs/songs.module').then(m => m.SongsModule)
+  },
+  {
+    path: 'profile',
+    component: ProfilePageComponent
   },
   {
     path: '**',//TODO 404 cuando no existe la ruta

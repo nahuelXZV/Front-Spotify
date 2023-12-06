@@ -2,8 +2,7 @@ import { environment } from './../../../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { INewGenre } from '../interfaces/genre.interface';
-import { IGenre } from '@core/models/genre.interface';
+import { IGenre, INewGenre } from '../interfaces/genre.interface';
 
 @Injectable({
     providedIn: 'root'

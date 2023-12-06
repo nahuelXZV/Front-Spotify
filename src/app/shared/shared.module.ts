@@ -14,6 +14,8 @@ import { ImgBrokenDirective } from './directives/img-broken.directive';
 import { ModalFormComponent } from './components/modarl-form/modal-form.component';
 import { CardComponent } from './components/card/card.component';
 import { DropZoneImageComponent } from './components/drop-zone-image/drop-zone-image.component';
+import { CardGenreComponent } from './components/card-genre/card-genre.component';
+import { CardTrackComponent } from './components/card-track/card-track.component';
 
 
 
@@ -31,6 +33,8 @@ import { DropZoneImageComponent } from './components/drop-zone-image/drop-zone-i
     ModalFormComponent,
     CardComponent,
     DropZoneImageComponent,
+    CardGenreComponent,
+    CardTrackComponent
   ],
   imports: [
     CommonModule,
@@ -51,6 +55,8 @@ import { DropZoneImageComponent } from './components/drop-zone-image/drop-zone-i
     ModalFormComponent,
     CardComponent,
     DropZoneImageComponent,
+    CardGenreComponent,
+    CardTrackComponent
   ]
 })
 export class SharedModule { }

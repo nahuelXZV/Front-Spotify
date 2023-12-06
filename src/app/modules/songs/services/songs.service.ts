@@ -2,7 +2,8 @@ import { environment } from './../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { INewSong } from '../interfaces/song.interface';
+import { INewSong, ISong } from '../interfaces/song.interface';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @Injectable({
@@ -10,7 +11,10 @@ import { INewSong } from '../interfaces/song.interface';
 })
 export class SongService {
   private readonly URL = environment.api
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private cookie: CookieService
+  ) { }
 
   sendCredentials(newSong: INewSong): Observable<any> {
     const body = new FormData();
@@ -27,5 +31,26 @@ export class SongService {
 
   getSongs(id: string): Observable<any> {
     return this.http.get(`${this.URL}/canciones/by/usuario.id/${id}`)
+  }
+
+  getAllTracks(): Observable<ISong[]> {
+    const options = {
+      headers: { Authorization: `Bearer ${this.cookie.get('token')}` }
+    }
+    return this.http.get<ISong[]>(`${this.URL}/canciones?limit=8`, options);
+  }
+
+  getAllTracksRecommended(): Observable<ISong[]> {
+    const options = {
+      headers: { Authorization: `Bearer ${this.cookie.get('token')}` }
+    }
+    return this.http.get<ISong[]>(`${this.URL}/canciones?limit=4`, options);
+  }
+
+  searchTracks(event: string): Observable<ISong[]> {
+    const options = {
+      headers: { Authorization: `Bearer ${this.cookie.get('token')}` }
+    }
+    return this.http.get<ISong[]>(`${this.URL}/canciones/by/nombre/${event}`, options);
   }
 }

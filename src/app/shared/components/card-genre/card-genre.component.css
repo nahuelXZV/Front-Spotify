@@ -1,10 +1,6 @@
-.tracks-page {
-    padding: 1rem;
-}
-/* CSS */
 .section {
   width: 100%;
-  padding: 10px;
+  padding: 20px;
 }
 
 .section h2 {
@@ -26,10 +22,4 @@
 .card h3 {
   font-size: 18px;
   margin: 10px;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  grid-gap: 20px;
 }

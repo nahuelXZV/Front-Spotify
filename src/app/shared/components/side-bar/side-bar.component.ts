@@ -1,5 +1,11 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { IUser } from '@modules/auth/interfaces/auth.interface';
+import { UserService } from '@modules/dashboard/services/user.service';
+import { ISong } from '@modules/songs/interfaces/song.interface';
+import { SongService } from '@modules/songs/services/songs.service';
+import { CookieService } from 'ngx-cookie-service';
+import { StateService } from 'src/app/services/state.service';
 
 @Component({
   selector: 'app-side-bar',
@@ -13,8 +19,16 @@ export class SideBarComponent implements OnInit {
   } = { defaultOptions: [], accessLink: [] }
 
   customOptions: Array<any> = []
+  listTrackRecommended: ISong[] = []
+  user!: IUser;
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private songService: SongService,
+    private userService: UserService,
+    private stateService: StateService,
+    private cokie: CookieService
+  ) { }
 
   ngOnInit(): void {
     this.mainMenu.defaultOptions = [
@@ -75,8 +89,17 @@ export class SideBarComponent implements OnInit {
         router: ['/']
       }
     ]
-
+    this.songService.getAllTracksRecommended().subscribe((data: any) => {
+      this.listTrackRecommended = [...data].reverse()
+    })
+    this.userService.getUserAuth().subscribe((user: IUser) => {
+      this.user = user
+    })
+    if (this.user.role != 'admin') {
+      this.mainMenu.defaultOptions.splice(0, 1);
+    }
   }
+
 
   goTo($event: any): void {
     this.router.navigate(['/', 'favorites'], {
@@ -87,5 +110,11 @@ export class SideBarComponent implements OnInit {
       }
     })
     console.log($event)
+  }
+
+  handleLogout(): void {
+    this.stateService.clearCurrentUser();
+    this.cokie.delete('token');
+    this.router.navigate(['/', 'auth', 'login']);
   }
 }

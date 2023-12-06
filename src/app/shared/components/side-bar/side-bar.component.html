@@ -1,28 +1,40 @@
 <div class="side-bar">
-    <div><i class="uil uil-ellipsis-h"></i></div>
-    <ul class="side-bar__list list-one">
-        <li [routerLink]="item.router" [queryParams]="item.query" *ngFor="let item of mainMenu.defaultOptions">
-            <div class="list-wrapper-item">
-                <i [ngClass]="['uil',item.icon]"></i>
-                <span class="side-bar__list list-label">{{item.name}}</span>
-            </div>
-        </li>
-    </ul>
-    <div class="side-bar__separator"></div>
-    <ul class="side-bar__list list-two">
-        <li *ngFor="let item of mainMenu.accessLink">
-            <div class="list-wrapper-item">
-                <i [ngClass]="['uil',item.icon]"></i>
-                <span class="side-bar__list list-label">{{item.name}}</span>
-            </div>
-        </li>
-    </ul>
-    <div class="side-bar__separator line-separator"></div>
-    <ul class="side-bar__list list-three">
-        <li *ngFor="let item of customOptions">
-            <div class="list-wrapper-item">
-                <span class="side-bar__list list-label">{{item.name}}</span>
-            </div>
-        </li>
-    </ul>
+  <br>
+  <div class="profile" [routerLink]="['/', 'profile']">
+    <i class="uil uil-user"></i>
+    <span class="profile__name">
+      {{user.nombre + ' ' + user.apellido | titlecase}}
+    </span>
+  </div>
+  <span class="title">Menu</span>
+  <div class="side-bar__separator"></div>
+  <div class="side-bar__separator"></div>
+  <ul class="side-bar__list list-one">
+    <li [routerLink]="item.router" [queryParams]="item.query" *ngFor="let item of mainMenu.defaultOptions">
+      <div class="list-wrapper-item">
+        <i [ngClass]="['uil',item.icon]"></i>
+        <span class="side-bar__list list-label">{{item.name}}</span>
+      </div>
+    </li>
+  </ul>
+  <div class="side-bar__separator line-separator"></div>
+  <span class="title">Recomendaciones</span>
+  <div class="side-bar__separator"></div>
+  <ul class="side-bar__list list-three">
+    <li *ngFor="let track of listTrackRecommended">
+      <div class="list-wrapper-item">
+        <img [src]="track.imagen" alt="imagen de la track" class="img">
+        <span class="trackName">{{track.nombre}}</span>
+      </div>
+    </li>
+  </ul>
+
+  <div class="side-bar__separator line-separator"></div>
+  <div class="side-bar__separator"></div>
+  <div class="profile" (click)="handleLogout()">
+    <i class="uil uil-sign-out-alt"></i>
+    <span class="profile__name">
+      Cerrar sesión
+    </span>
+  </div>
 </div>

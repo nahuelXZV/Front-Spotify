@@ -11,7 +11,8 @@ export class SearchComponent implements OnInit {
 
   src: string = ''
 
-  constructor() { }
+  constructor(
+  ) { }
 
   ngOnInit(): void {
   }

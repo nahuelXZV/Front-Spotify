@@ -1,0 +1,31 @@
+<div class="login-auth-page">
+  <div class="login-auth-wrapper">
+    <br>
+    <p class="title">Editar Perfil</p>
+    <div class="separator"></div>
+    <form (ngSubmit)="sendLogin()" [formGroup]="formRegister" class="login-auth-form">
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input formControlName="nombre" type="text" placeholder="Nombre" class="form-input">
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="apellido">Apellido</label>
+        <input formControlName="apellido" type="text" placeholder="Apellido" class="form-input">
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="password">Contraseña</label>
+        <input formControlName="password" type="password" placeholder="Contraseña" class="form-input">
+      </div>
+      <br>
+      <div *ngIf="errorSession">
+        Ocurrio un error con tu email o password
+      </div>
+      <br>
+      <div class="form-action">
+        <button [disabled]="formRegister.invalid" class="login social-btn">Guardar</button>
+      </div>
+    </form>
+  </div>
+</div>

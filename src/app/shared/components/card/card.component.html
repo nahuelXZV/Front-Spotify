@@ -1,11 +1,12 @@
 <!-- card.component.html -->
 <div class="card" [ngClass]="class">
-    <img *ngIf="imageUrl" [src]="imageUrl" alt="Card Image">
-    <div class="custom-content">
-        <ng-content></ng-content>
-    </div>
-    <button class="custom-button" (click)="handleButtonClick()">
+  <img *ngIf="imageUrl" [src]="imageUrl" alt="Card Image">
+  <div class="custom-content">
+    <ng-content>
+    </ng-content>
+  </div>
+  <button class="custom-button" (click)="handleButtonClick()">
     <!-- Contenido personalizado del botón -->
     <ng-content select="[buttonContent]"></ng-content>
-    </button>
+  </button>
 </div>
