@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ISong } from '@modules/songs/interfaces/song.interface';
 import { SongService } from '@modules/songs/services/songs.service';
-import { TrackService } from '@modules/tracks/services/track.service';
-import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-history-page',
@@ -12,17 +10,18 @@ import { Observable, of } from 'rxjs';
 export class HistoryPageComponent implements OnInit {
   listResults: ISong[] = [];
 
-  constructor(private trackService: SongService) { }
+  constructor(private songService: SongService) { }
 
   ngOnInit(): void {
   }
 
   receiveData(event: string): void {
-    this.trackService.searchTracks(event)
-      .subscribe(responseOk => {
-        this.listResults = responseOk;
-      }, error => {
-        this.listResults = [];
-      })
+    this.songService.searchTracks(event).toPromise().then((data: ISong[]) => {
+      this.listResults = data;
+      console.log(this.listResults);
+    }).catch((error) => {
+      console.log(error);
+    })
+
   }
 }

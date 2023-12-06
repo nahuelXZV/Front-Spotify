@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 import { INewSong, ISong } from '../interfaces/song.interface';
 import { CookieService } from 'ngx-cookie-service';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -51,6 +50,6 @@ export class SongService {
     const options = {
       headers: { Authorization: `Bearer ${this.cookie.get('token')}` }
     }
-    return this.http.get<ISong[]>(`${this.URL}/canciones/by/nombre/${event}`, options);
+    return this.http.get<ISong[]>(`${this.URL}/canciones/search/nombre/${event}`, options);
   }
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { IUser } from '@modules/auth/interfaces/auth.interface';
+import { UserService } from '@modules/dashboard/services/user.service';
 import { IAlbum } from '@modules/songs/interfaces/album.interface';
 import { AlbumService } from '@modules/songs/services/album.service';
 
@@ -13,15 +15,20 @@ export class MyAlbumsComponent implements OnInit {
   albumToEdit: IAlbum | null = null;
 
   albums: IAlbum[] = [];
+  user!: IUser;
   openCreateAlbumModal: boolean = false;
 
   constructor(
     private albumService: AlbumService,
-    private router: Router
-    ) { }
+    private router: Router,
+    private userService: UserService
+  ) { }
 
   ngOnInit(): void {
-    this.getGenres();
+    this.userService.getUserAuth().toPromise().then(user => {
+      this.user = user;
+      this.getGenres();
+    });
   }
 
   handleOpenCreateGenreModalButton() {
@@ -29,7 +36,7 @@ export class MyAlbumsComponent implements OnInit {
   }
 
   private getGenres() {
-    this.albumService.getAlbums()
+    this.albumService.getAlbumsby(this.user.id)
       .subscribe(albums => {
         this.albums = albums;
       },
@@ -90,7 +97,7 @@ export class MyAlbumsComponent implements OnInit {
       }, err => { console.log(err) })
   }
 
-  handleViewSongsButton(){
+  handleViewSongsButton() {
     this.router.navigate(['/', 'songs'])
   }
 }

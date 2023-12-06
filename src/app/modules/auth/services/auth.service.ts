@@ -15,6 +15,7 @@ export interface IRegister {
 })
 export class AuthService {
   private readonly URL = environment.api
+
   constructor(
     private http: HttpClient
   ) { }

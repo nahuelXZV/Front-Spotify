@@ -92,6 +92,7 @@ export class RegisterPageComponent implements OnInit, AfterViewInit {
       },
         err => {//TODO error 400>=
           this.errorSession = true
+          console.log(err);
           console.log('⚠⚠⚠⚠Ocurrio error con tu email o password');
         })
 
