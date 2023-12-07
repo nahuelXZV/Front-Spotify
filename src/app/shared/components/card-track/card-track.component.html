@@ -1,7 +1,10 @@
 <div class="card">
-  <a href="" class="card-a">
-    <img [src]="track.imagen" alt="track image" class="img">
-    <p class="nametrack">{{track.nombre}}</p>
-    <p class="artista">{{artistaName}}</p>
-  </a>
+    <div class="card-a cover-container">
+      <img [src]="track.imagen" alt="track image" class="img">
+      <p class="nametrack">{{track.nombre}}</p>
+      <p class="artista">{{artistaName}}</p>
+      <button class="play-button" (click)="getSong()">
+        <i class="uil uil-play-circle"></i>
+      </button>
+    </div>
 </div>

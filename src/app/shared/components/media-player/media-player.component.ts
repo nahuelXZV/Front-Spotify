@@ -12,6 +12,8 @@ export class MediaPlayerComponent implements OnInit, OnDestroy {
   @ViewChild('progressBar') progressBar: ElementRef = new ElementRef('')
   listObservers$: Array<Subscription> = []
   state: string = 'paused'
+  idiomas: string[] = ['es', 'en', 'pt', 'fr', 'it', 'de']
+  lyrics: string = ''
   constructor(public multimediaService: MultimediaService) { }
 
   ngOnInit(): void {
@@ -38,5 +40,18 @@ export class MediaPlayerComponent implements OnInit, OnDestroy {
 
   }
 
+  handleIdiomButton(idioma: string): void {
+    this.multimediaService.setIdioma(idioma)
+    this.lyrics = this.multimediaService.getLyrics() ?? ""
+  }
+
+  handleLyricsButton(): void {
+    const htmlElement: HTMLElement = document.getElementById('lyrics-card') as HTMLElement
+    htmlElement.style.display = htmlElement.style.display === 'none' ? 'block' : 'none'
+
+    if(this.lyrics === ''){
+      this.lyrics = this.multimediaService.getLyrics() ?? ""
+    }
+  }
 
 }

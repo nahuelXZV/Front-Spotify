@@ -18,9 +18,9 @@
 <!-- ZONE TEMPLATES -->
 
 <ng-template #artistZone>
-    <div class="artist-inside" *ngIf="multimediaService.trackInfo$ | async as mockCover">
+    <div class="artist-inside" *ngIf="multimediaService.trackInfo as mockCover">
 
-        <img [src]="mockCover.cover" alt="" class="cover">
+        <img *ngIf="mockCover.cover" [src]="mockCover.cover" alt="" class="cover">
         <div class="track-info">
             <h3 class="track-title">{{mockCover.name}}</h3>
             <h5 class="track-title sub-title">{{mockCover?.album}}</h5>
@@ -64,10 +64,13 @@
 
 <ng-template #playerAudio>
     <div class="player-audio-inside">
-        <button class="btn-media">
-            <i class="uil uil-list-ui-alt"></i>
+        <div id="lyrics-card" class="lyrics-card">
+            {{ lyrics === '' ? 'No hay letra disponible' : lyrics}}
+        </div>
+        <button class="btn-media" *ngFor="let idioma of idiomas" (click)="handleIdiomButton(idioma)">
+            {{idioma}}
         </button>
-        <button class="btn-media">
+        <button class="btn-media" (click)="handleLyricsButton()">
             <i class="uil uil-boombox"></i>
         </button>
         <button class="btn-media">

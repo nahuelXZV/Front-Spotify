@@ -15,6 +15,9 @@ export class MultimediaService {
   public timeRemaining$: BehaviorSubject<string> = new BehaviorSubject('-00:00')
   public playerStatus$: BehaviorSubject<string> = new BehaviorSubject('paused')
   public playerPercentage$: BehaviorSubject<number> = new BehaviorSubject(0)
+  public trackInfo: TrackModel = {} as TrackModel
+  public idioma: string = ''
+  public versiones: any[] = []
 
   constructor() {
 
@@ -97,8 +100,11 @@ export class MultimediaService {
 
   //TODO: Funciones publicas
 
-  public setAudio(track: TrackModel): void {
+  public setAudio(track: TrackModel, idioma = "", versiones: any[] = []): void {
+    this.idioma = idioma
+    this.versiones = versiones
     console.log('🐱‍🏍🐱‍🏍🐱‍🏍🐱‍🏍🐱‍🏍', track);
+    this.trackInfo = track
     this.audio.src = track.url
     this.audio.play()
   }
@@ -112,6 +118,24 @@ export class MultimediaService {
     const percentageToSecond = (percentage * duration) / 100
     this.audio.currentTime = percentageToSecond
 
+  }
+
+  public setIdioma(idioma: string): void {
+    this.idioma = idioma
+    const version = this.getVersionbyIdioma(this.versiones, idioma)
+    this.trackInfo.lyrics = version.letra
+    this.audio.src = version.url
+    this.audio.play()
+  }
+
+  private getVersionbyIdioma(versions: any[], idioma: string) {
+    console.log(versions, idioma);
+
+    return versions.find((version: any) => version.idioma === idioma)
+  }
+
+  getLyrics() {
+    return this.trackInfo.lyrics
   }
 
 }
