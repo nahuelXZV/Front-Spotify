@@ -68,9 +68,7 @@
       <br><br>
       <span class="title-letra">LETRA</span>
       <br> <br>
-      <p class="lyrics-body">
-        {{ lyrics === '' ? 'No hay letra disponible' : lyrics}}
-      </p>
+      <div style="white-space: pre-wrap;">{{ lyrics === '' ? 'No hay letra disponible' : lyrics }}</div>
     </div>
     <button class="btn-media" *ngFor="let idioma of idiomas" (click)="handleIdiomButton(idioma)">
       {{idioma | uppercase}}
