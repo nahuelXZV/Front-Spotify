@@ -26,6 +26,9 @@ export class SongService {
     body.append('isPrivado', newSong.isPrivado.toString());
     body.append('idioma', newSong.idioma);
 
+    console.log(body);
+
+
     return this.http.post(`${this.URL}/canciones`, body)
   }
 
