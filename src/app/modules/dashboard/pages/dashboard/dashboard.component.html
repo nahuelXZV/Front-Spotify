@@ -28,11 +28,14 @@
     </div>
     <div class="flex flex-col sub-container-col">
       <app-card [imageUrl]="'https://cdn-icons-png.flaticon.com/512/4381/4381522.png'" class="card"
-        (buttonClick)="handleButtonGenre()">
+        (buttonClick)="handleButtonSong()">
         <div class="custom-content">
           <h1>Gestionar Canciones</h1>
           <p>En esta sección se puede modificar las canciones.</p>
         </div>
+        <ng-container buttonContent>
+          <span>Acceder</span>
+        </ng-container>
       </app-card>
     </div>
   </div>

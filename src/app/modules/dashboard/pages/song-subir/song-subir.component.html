@@ -1,0 +1,38 @@
+<div>
+  <div class="header">
+    <h1>Subir Nueva Version: {{song.nombre}}</h1>
+  </div>
+  <div class="body">
+    <form [formGroup]="formSong" (ngSubmit)="sendSong()">
+      <div class="form-flex">
+        <div class="col">
+          <div class="input-form">
+            <label for="">
+              <span>Cancion</span>
+              <input type="file" name="" id="" (change)="handleChangeSong($event)">
+            </label>
+          </div>
+          <div class="input-form flex flex-col">
+            <label for="idioma">
+              <span>Estado</span>
+              <select name="idioma" id="idioma" formControlName="idioma">
+                <option value="no-value" selected disabled hidden>Elige una opción</option>
+                <option value="pendiente">Pendiente</option>
+                <option value="procesando">Procesando</option>
+                <option value="terminado">Terminado</option>
+              </select>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="form-flex ">
+        <div class="col">
+          <div class="input-form">
+            <button type="submit" class="submit">Guardar</button>
+            <button (click)="backToMySongs()" type="button" class="cancel">Volver</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -9,6 +9,7 @@ import { CookieService } from 'ngx-cookie-service';
   providedIn: 'root'
 })
 export class SongService {
+
   private readonly URL = environment.api
   constructor(
     private http: HttpClient,
@@ -51,5 +52,19 @@ export class SongService {
       headers: { Authorization: `Bearer ${this.cookie.get('token')}` }
     }
     return this.http.get<ISong[]>(`${this.URL}/canciones/search/nombre/${event}`, options);
+  }
+
+  getSong(id: string): Observable<ISong> {
+    const options = {
+      headers: { Authorization: `Bearer ${this.cookie.get('token')}` }
+    }
+    return this.http.get<ISong>(`${this.URL}/canciones/${id}`, options);
+  }
+
+  downloadSong(url: string): Observable<any> {
+    const options = {
+      headers: { Authorization: `Bearer ${this.cookie.get('token')}` },
+    }
+    return this.http.get(url, options);
   }
 }

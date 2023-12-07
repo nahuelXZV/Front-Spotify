@@ -1,0 +1,35 @@
+<div class="song-page">
+  <h1>{{song.nombre + ' - ' + song.usuario.nombre + ' ' + song.usuario.apellido}}</h1>
+  <div class="card column">
+    <img [src]="song.imagen" alt="Song Image" class="imagen">
+  </div>
+  <div class="card-body">
+    <p class="subtitle">Artista: {{song.usuario.nombre + ' ' + song.usuario.apellido}}</p>
+    <p class="subtitle">Fecha Lanzamiento: {{song.fecha_lanzamiento}}</p>
+    <p class="subtitle">Duracion: {{song.duracion}}</p>
+    <p class="subtitle">Genero: {{song.genero.nombre}}</p>
+    <p class="subtitle">Album: {{song.album.nombre}}</p>
+  </div>
+  <br><br><br><br><br>
+  <h2>Versiones</h2>
+  <table class="versions-table">
+    <tr class="table-header">
+      <th>Idioma</th>
+      <th>Nombre File</th>
+      <th>Original</th>
+      <th>Estado</th>
+      <th>Acciones</th>
+    </tr>
+    <tr *ngFor="let version of versiones" class="table-body">
+      <td>{{version.idioma}}</td>
+      <td>{{version.nombre_cancion}}</td>
+      <td>{{version.isBase}}</td>
+      <td>{{version.estado_traduccion | uppercase }}</td>
+      <td>
+        <button class="btn btn-primary" (click)="subir(version.cancion.id,version.idioma)">Subir</button>
+        <a [href]="version.url_cancion" target="_blank" class="btn btn-primary">Descargar</a>
+      </td>
+    </tr>
+  </table>
+  <br><br><br>
+</div>
