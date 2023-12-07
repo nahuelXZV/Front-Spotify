@@ -116,7 +116,7 @@ export class MultimediaService {
     this.idioma = idioma
     const version = this.getVersionbyIdioma(this.versiones, idioma)
     this.trackInfo.lyrics = version.letra
-    if (version.estado_traduccion === 'terminado') {
+    if (version.estado_traduccion == 'terminado') {
       this.audio.src = version.url
       this.audio.play()
     }

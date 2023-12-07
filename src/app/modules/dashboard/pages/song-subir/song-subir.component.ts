@@ -34,6 +34,7 @@ export class SongSubirComponent implements OnInit {
     })
     this.versionService.getOneVersion(id, idioma).subscribe(version => {
       this.version = version
+      console.log('version', this.version);
       this.songService.getSong(this.version.cancion.id)
         .subscribe(song => {
           this.song = song
@@ -46,6 +47,7 @@ export class SongSubirComponent implements OnInit {
   sendSong() {
     const cancion = this.formSong.value.cancion
     const estado_traduccion = this.formSong.value.estado_traduccion
+    console.log('sendSong', cancion, estado_traduccion);
     this.versionService.updateVersion(this.version.id, cancion, estado_traduccion).subscribe(responseOk => {
       console.log('song updated succesful', responseOk);
       this.router.navigate(['/', 'admin/song/' + this.song.id])
