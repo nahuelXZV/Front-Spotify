@@ -17,7 +17,6 @@ export class MediaPlayerComponent implements OnInit, OnDestroy {
   constructor(public multimediaService: MultimediaService) { }
 
   ngOnInit(): void {
-
     const observer1$ = this.multimediaService.playerStatus$
       .subscribe(status => this.state = status)
     this.listObservers$ = [observer1$]
@@ -37,7 +36,6 @@ export class MediaPlayerComponent implements OnInit, OnDestroy {
     const percentageFromX = (clickX * 100) / width
     console.log(`Click(x): ${percentageFromX}`);
     this.multimediaService.seekAudio(percentageFromX)
-
   }
 
   handleIdiomButton(idioma: string): void {
@@ -48,7 +46,6 @@ export class MediaPlayerComponent implements OnInit, OnDestroy {
   handleLyricsButton(): void {
     const htmlElement: HTMLElement = document.getElementById('lyrics-card') as HTMLElement
     htmlElement.style.display = htmlElement.style.display === 'none' ? 'block' : 'none'
-
     if(this.lyrics === ''){
       this.lyrics = this.multimediaService.getLyrics() ?? ""
     }

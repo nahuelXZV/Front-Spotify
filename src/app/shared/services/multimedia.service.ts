@@ -2,7 +2,6 @@ import { TrackModel } from './../../core/models/tracks.model';
 import { EventEmitter, Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Observer, Subject } from 'rxjs';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -20,27 +19,21 @@ export class MultimediaService {
   public versiones: any[] = []
 
   constructor() {
-
     this.audio = new Audio()
-
     this.trackInfo$.subscribe(responseOK => {
       if (responseOK) {
         this.setAudio(responseOK)
       }
     })
-
     this.listenAllEvents()
-
   }
 
   private listenAllEvents(): void {
-
     this.audio.addEventListener('timeupdate', this.calculateTime, false)
     this.audio.addEventListener('playing', this.setPlayerStatus, false)
     this.audio.addEventListener('play', this.setPlayerStatus, false)
     this.audio.addEventListener('pause', this.setPlayerStatus, false)
     this.audio.addEventListener('ended', this.setPlayerStatus, false)
-
   }
 
   private setPlayerStatus = (state: any) => {
@@ -117,15 +110,16 @@ export class MultimediaService {
     const { duration } = this.audio
     const percentageToSecond = (percentage * duration) / 100
     this.audio.currentTime = percentageToSecond
-
   }
 
   public setIdioma(idioma: string): void {
     this.idioma = idioma
     const version = this.getVersionbyIdioma(this.versiones, idioma)
     this.trackInfo.lyrics = version.letra
-    this.audio.src = version.url
-    this.audio.play()
+    if (version.estado_traduccion === 'terminado') {
+      this.audio.src = version.url
+      this.audio.play()
+    }
   }
 
   private getVersionbyIdioma(versions: any[], idioma: string) {
