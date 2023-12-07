@@ -25,12 +25,18 @@
 <!--template del cover-->
 <ng-template #coverSection let-track="track">
 
-    <div class="cover-section">
-        <img class="cover-track" [src]="track.imagen" [alt]="track.nombre">
-        <div class="cover-info">
-            <div class="name-track">{{track.nombre}}</div>
-            <div class="name-track-details">{{track.usuario.nombre}}</div>
-        </div>
+
+  <div class="cover-section">
+    <div class="cover-container">
+      <img class="cover-track" [src]="track.imagen" [alt]="track.nombre">
+      <button class="play-button" (click)="getSong(track)">
+        <i class="uil uil-play-circle"></i>
+      </button>
     </div>
+    <div class="cover-info">
+      <div class="name-track">{{track.nombre}}</div>
+      <div class="name-track-details">{{track.usuario.nombre}}</div>
+    </div>
+  </div>
 
 </ng-template>

@@ -54,3 +54,34 @@
     font-size: 80%;
     opacity: .7;
 }
+
+.cover-container {
+    position: relative;
+    display: inline-block;
+}
+
+.play-button {
+    /* display: none; */
+    visibility: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -10%);
+    /* padding: 0px; */
+    /* padding: 10px 20px; */
+    font-size: 25px;
+    background-color: #1db954; /* Cambia el color del botón según tus necesidades */
+    color: #fff;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    /* Añade cualquier otro estilo que desees */
+}
+
+.cover-container:hover .play-button {
+    visibility: visible;
+    background-color: #1ed760;
+    transform: translate(-50%, -60%) scale(1.2);
+    transition: 0.3s ease-in-out all;
+}
+
